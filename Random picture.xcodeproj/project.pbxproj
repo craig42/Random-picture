@@ -15,6 +15,12 @@
 		4410F33324AF3CF300700298 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4410F33124AF3CF300700298 /* LaunchScreen.storyboard */; };
 		4410F33E24AF3CF300700298 /* Random_pictureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F33D24AF3CF300700298 /* Random_pictureTests.swift */; };
 		4410F34924AF3CF300700298 /* Random_pictureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F34824AF3CF300700298 /* Random_pictureUITests.swift */; };
+		4410F36024AF72A500700298 /* RetrievePictureWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F35F24AF72A500700298 /* RetrievePictureWorker.swift */; };
+		4410F36224AF73A900700298 /* PictureEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F36124AF73A900700298 /* PictureEntity.swift */; };
+		4410F36424AF783200700298 /* NetworkWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F36324AF783200700298 /* NetworkWorker.swift */; };
+		4410F36624AF789100700298 /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F36524AF789100700298 /* NetworkConfiguration.swift */; };
+		4410F36824AF91B100700298 /* PictureInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F36724AF91B100700298 /* PictureInteractor.swift */; };
+		4410F36A24AF943800700298 /* PicturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F36924AF943800700298 /* PicturePresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +55,13 @@
 		4410F34424AF3CF300700298 /* Random pictureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Random pictureUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4410F34824AF3CF300700298 /* Random_pictureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random_pictureUITests.swift; sourceTree = "<group>"; };
 		4410F34A24AF3CF300700298 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4410F35624AF3D0700700298 /* Random picture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Random picture.entitlements"; sourceTree = "<group>"; };
+		4410F35F24AF72A500700298 /* RetrievePictureWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrievePictureWorker.swift; sourceTree = "<group>"; };
+		4410F36124AF73A900700298 /* PictureEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEntity.swift; sourceTree = "<group>"; };
+		4410F36324AF783200700298 /* NetworkWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWorker.swift; sourceTree = "<group>"; };
+		4410F36524AF789100700298 /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
+		4410F36724AF91B100700298 /* PictureInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureInteractor.swift; sourceTree = "<group>"; };
+		4410F36924AF943800700298 /* PicturePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,12 +112,12 @@
 		4410F32524AF3CF100700298 /* Random picture */ = {
 			isa = PBXGroup;
 			children = (
+				4410F35624AF3D0700700298 /* Random picture.entitlements */,
 				4410F32624AF3CF100700298 /* AppDelegate.swift */,
+				4410F35E24AF707100700298 /* Module */,
 				4410F32824AF3CF100700298 /* SceneDelegate.swift */,
-				4410F32A24AF3CF100700298 /* ViewController.swift */,
-				4410F32C24AF3CF100700298 /* Main.storyboard */,
-				4410F32F24AF3CF300700298 /* Assets.xcassets */,
 				4410F33124AF3CF300700298 /* LaunchScreen.storyboard */,
+				4410F32F24AF3CF300700298 /* Assets.xcassets */,
 				4410F33424AF3CF300700298 /* Info.plist */,
 			);
 			path = "Random picture";
@@ -126,6 +139,69 @@
 				4410F34A24AF3CF300700298 /* Info.plist */,
 			);
 			path = "Random pictureUITests";
+			sourceTree = "<group>";
+		};
+		4410F35824AF6FD300700298 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				4410F36124AF73A900700298 /* PictureEntity.swift */,
+				4410F36524AF789100700298 /* NetworkConfiguration.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		4410F35924AF6FDC00700298 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		4410F35A24AF6FEC00700298 /* Worker */ = {
+			isa = PBXGroup;
+			children = (
+				4410F35F24AF72A500700298 /* RetrievePictureWorker.swift */,
+				4410F36324AF783200700298 /* NetworkWorker.swift */,
+			);
+			path = Worker;
+			sourceTree = "<group>";
+		};
+		4410F35B24AF6FFA00700298 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				4410F36724AF91B100700298 /* PictureInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		4410F35C24AF700700700298 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4410F32A24AF3CF100700298 /* ViewController.swift */,
+				4410F32C24AF3CF100700298 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4410F35D24AF701500700298 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4410F36924AF943800700298 /* PicturePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4410F35E24AF707100700298 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				4410F35824AF6FD300700298 /* Entity */,
+				4410F35A24AF6FEC00700298 /* Worker */,
+				4410F35924AF6FDC00700298 /* Router */,
+				4410F35B24AF6FFA00700298 /* Interactor */,
+				4410F35D24AF701500700298 /* Presenter */,
+				4410F35C24AF700700700298 /* View */,
+			);
+			path = Module;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +336,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				4410F32B24AF3CF100700298 /* ViewController.swift in Sources */,
+				4410F36824AF91B100700298 /* PictureInteractor.swift in Sources */,
+				4410F36A24AF943800700298 /* PicturePresenter.swift in Sources */,
+				4410F36224AF73A900700298 /* PictureEntity.swift in Sources */,
+				4410F36424AF783200700298 /* NetworkWorker.swift in Sources */,
 				4410F32724AF3CF100700298 /* AppDelegate.swift in Sources */,
+				4410F36624AF789100700298 /* NetworkConfiguration.swift in Sources */,
+				4410F36024AF72A500700298 /* RetrievePictureWorker.swift in Sources */,
 				4410F32924AF3CF100700298 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,7 +448,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -420,7 +502,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -434,6 +516,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Random picture/Random picture.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4CPR929BWY;
 				INFOPLIST_FILE = "Random picture/Info.plist";
@@ -443,6 +526,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "craig.Random-picture";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -452,6 +536,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Random picture/Random picture.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4CPR929BWY;
 				INFOPLIST_FILE = "Random picture/Info.plist";
@@ -461,6 +546,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "craig.Random-picture";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
