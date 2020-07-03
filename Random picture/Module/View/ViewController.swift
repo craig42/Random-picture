@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PictureViewProtocol {
+protocol PictureViewProtocol : class {
     var presenter: PicturePresenterProtocol? { get set }
     func set(viewModel: PictureViewModel)
 }
@@ -20,8 +20,9 @@ class ViewController: UIViewController, PictureViewProtocol {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.fetchNewPicture(withDimension: imageDimension())
-        
+        print("fetching new picture")
+        presenter?.fetchNewPicture(with: imageDimension())
+        print("done")
     }
     
     func imageDimension() -> Dimension {
@@ -37,7 +38,7 @@ class ViewController: UIViewController, PictureViewProtocol {
     }
     
     @IBAction func nextButton(_ sender: Any) {
-        presenter?.fetchNewPicture(withDimension: imageDimension())
+        presenter?.fetchNewPicture(with: imageDimension())
     }
 
     func set(viewModel: PictureViewModel) {

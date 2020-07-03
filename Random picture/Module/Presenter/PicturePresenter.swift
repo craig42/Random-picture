@@ -9,13 +9,15 @@
 import Foundation
 import UIKit
 
-protocol PicturePresenterProtocol {
+protocol PicturePresenterProtocol: class {
     
-    func fetchNewPicture(withDimension:Dimension)
+    func fetchNewPicture(with Dimension: Dimension)
     
     func savePicture()
     
     func aboutView()
+    
+    func interactor(interactor: PictureInteractorProtocol, object: PictureEntity)
     
 }
 
@@ -24,9 +26,23 @@ struct PictureViewModel {
 }
 
 
-class PicturePresenter : PicturePresenterProtocol {
-    func fetchNewPicture(withDimension:Dimension) {
-        
+class PicturePresenter {
+    var view: PictureViewProtocol?
+    var interactor: PictureInteractorProtocol?
+    var wireFrame: PictureRouterProtocol?
+}
+
+extension PicturePresenter: PicturePresenterProtocol {
+    
+    func interactor(interactor: PictureInteractorProtocol, object: PictureEntity) {
+        let pictureViewModel = PictureViewModel(image: object.image)
+        view?.set(viewModel: pictureViewModel)
+    }
+    
+    
+    func fetchNewPicture(with dimension: Dimension) {
+        print("fetch picture from presenter")
+        interactor?.fetchNewPicture(with: dimension)
     }
     
     func savePicture() {
@@ -36,5 +52,4 @@ class PicturePresenter : PicturePresenterProtocol {
     func aboutView() {
         
     }
-    
 }

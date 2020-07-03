@@ -11,10 +11,25 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow (frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        
+        let pictureView = ViewController(nibName:"Main", bundle:nil)
+        let storyboard = pictureView.storyboard
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "PictureView") else { return false }
+
+        let navController = UINavigationController(rootViewController: vc)
+        
+        window?.rootViewController = navController
+        
+        let pictureBuilder = PictureBuilder()
+        pictureBuilder.buildModule(view: pictureView)
+        
         return true
     }
 
