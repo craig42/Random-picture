@@ -14,22 +14,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    /*
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let pictureView = storyboard.instantiateViewController(withIdentifier: "ViewControllerID")
+
+        if let pictureView = pictureView as? PictureViewProtocol {
+            print("cool")
+            PictureBuilder.buildModule(view: pictureView)
+        }
+        
+        let navController = UINavigationController(rootViewController: pictureView)
         
         window = UIWindow (frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        
-        
-        let pictureView = ViewController(nibName:"Main", bundle:nil)
-        let storyboard = pictureView.storyboard
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "PictureView") else { return false }
-
-        let navController = UINavigationController(rootViewController: vc)
-        
         window?.rootViewController = navController
+*/
         
-        let pictureBuilder = PictureBuilder()
-        pictureBuilder.buildModule(view: pictureView)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let pictureView = storyboard.instantiateViewController(withIdentifier: "ViewControllerID")
+        //let masterVC = ViewController()
+        PictureBuilder.buildModule(view: pictureView as! PictureViewProtocol)
         
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = pictureView
+        window?.makeKeyAndVisible()
         return true
     }
 

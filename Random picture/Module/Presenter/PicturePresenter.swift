@@ -36,6 +36,7 @@ extension PicturePresenter: PicturePresenterProtocol {
     
     func interactor(interactor: PictureInteractorProtocol, object: PictureEntity) {
         let pictureViewModel = PictureViewModel(image: object.image)
+        print("I'm setting to the view : \(pictureViewModel.image)")
         view?.set(viewModel: pictureViewModel)
     }
     

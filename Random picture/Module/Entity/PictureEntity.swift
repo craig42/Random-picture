@@ -16,6 +16,6 @@ struct PictureEntity {
 }
 
 struct Dimension {
-    var height: Double
-    var width: Double
+    var height: Int
+    var width: Int
 }
