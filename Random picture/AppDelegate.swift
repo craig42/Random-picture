@@ -11,33 +11,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    /*
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let pictureView = storyboard.instantiateViewController(withIdentifier: "ViewControllerID")
-
-        if let pictureView = pictureView as? PictureViewProtocol {
-            print("cool")
-            PictureBuilder.buildModule(view: pictureView)
-        }
-        
-        let navController = UINavigationController(rootViewController: pictureView)
-        
-        window = UIWindow (frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        window?.rootViewController = navController
-*/
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let pictureView = storyboard.instantiateViewController(withIdentifier: "ViewControllerID")
-        //let masterVC = ViewController()
-        PictureBuilder.buildModule(view: pictureView as! PictureViewProtocol)
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = pictureView
-        window?.makeKeyAndVisible()
         return true
     }
 

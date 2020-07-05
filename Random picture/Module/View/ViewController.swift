@@ -20,14 +20,15 @@ class ViewController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("fetching new picture \(presenter)")
         presenter?.fetchNewPicture(with: imageDimension())
-        print("done")
     }
     
     func imageDimension() -> Dimension {
-        //return Dimension(height: Double(imageView.frame.height), width: Double(imageView.frame.width))
-        return Dimension(height: 400, width: 400)
+        return Dimension(height: Int(Double(imageView.frame.height)), width: Int(Double(imageView.frame.width)))
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+          return .lightContent
     }
     
     @IBAction func saveImageButton(_ sender: Any) {
