@@ -12,7 +12,7 @@ import UIKit
 struct PictureEntity {
     let image : UIImage
     let id : Int
-    let dimension : Dimension
+    let dimension : Dimension?
 }
 
 struct Dimension {

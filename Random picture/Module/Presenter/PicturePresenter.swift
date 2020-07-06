@@ -19,6 +19,8 @@ protocol PicturePresenterProtocol: class {
     
     func interactor(interactor: PictureInteractorProtocol, object: PictureEntity)
     
+    func saveInteractor(interactor: PictureInteractorProtocol, statusCode:StatusCode)
+    
 }
 
 struct PictureViewModel {
@@ -40,6 +42,17 @@ extension PicturePresenter: PicturePresenterProtocol {
         view?.set(viewModel: pictureViewModel)
     }
     
+    func saveInteractor(interactor: PictureInteractorProtocol, statusCode:StatusCode) {
+        switch statusCode {
+        case StatusCode.success:
+            view?.createAlert(title: "Success", message: "Message saved into library", actionTitle: "Ok")
+        case StatusCode.error:
+            view?.createAlert(title: "Fail", message: "There is an error, check your library permission", actionTitle: "Ok")
+        default:
+            break
+        }
+    }
+    
     
     func fetchNewPicture(with dimension: Dimension) {
         print("fetch picture from presenter")
@@ -47,7 +60,8 @@ extension PicturePresenter: PicturePresenterProtocol {
     }
     
     func savePicture() {
-        
+        print("save picture from presenter")
+        interactor?.savePicture()
     }
     
     func aboutView() {

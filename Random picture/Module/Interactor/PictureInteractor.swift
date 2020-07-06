@@ -10,7 +10,7 @@ import Foundation
 
 protocol PictureInteractorProtocol {
     func fetchNewPicture(with dimension: Dimension)
-    func savePicture(withId:Int)
+    func savePicture()
 }
 
 class PictureInteractor: PictureInteractorProtocol {
@@ -25,15 +25,27 @@ class PictureInteractor: PictureInteractorProtocol {
     
     func fetchNewPicture(with dimension: Dimension) {
         print("fetch picture form interactor")
-        apiWorker.fetchPicture(with: dimension, callback: { (pictureEntity) in
+        apiWorker.fetchPicture(with: dimension, callback: { pictureEntity, error in
             print("I have the picture from intetactor")
-            self.pictureEntity = pictureEntity
-            self.presenter?.interactor(interactor: self, object: pictureEntity)
+            if let pictureEntity = pictureEntity {
+                self.pictureEntity = pictureEntity
+                self.presenter?.interactor(interactor: self, object: pictureEntity)
+            }
         })
     }
     
-    func savePicture(withId:Int) {
-        
+    func savePicture() {
+        if let id = self.pictureEntity?.id {
+            apiWorker.fetchPictureInfo(with: id, callback: { pictureInfo, error in
+                if let pictureInfo = pictureInfo {
+                    let url = pictureInfo.downloadURL
+                    self.apiWorker.fetchPictureFullSize(with: url, callback: { pictureEntity,error in
+                        // Do stuff to save image to camera roll
+                        // Call presenter to indicate status of 
+                    })
+                }
+            })
+        }
     }
     
     

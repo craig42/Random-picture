@@ -23,6 +23,7 @@
 		4410F36A24AF943800700298 /* PicturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F36924AF943800700298 /* PicturePresenter.swift */; };
 		449ACD1124AF9DD500288D41 /* PictureRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACD1024AF9DD500288D41 /* PictureRouterProtocol.swift */; };
 		449ACD1324AFBA0C00288D41 /* PictureBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACD1224AFBA0C00288D41 /* PictureBuilder.swift */; };
+		44AA7CA724B3BA4100EF9071 /* PictureInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA7CA624B3BA4100EF9071 /* PictureInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		4410F36924AF943800700298 /* PicturePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePresenter.swift; sourceTree = "<group>"; };
 		449ACD1024AF9DD500288D41 /* PictureRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureRouterProtocol.swift; sourceTree = "<group>"; };
 		449ACD1224AFBA0C00288D41 /* PictureBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureBuilder.swift; sourceTree = "<group>"; };
+		44AA7CA624B3BA4100EF9071 /* PictureInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			children = (
 				4410F36124AF73A900700298 /* PictureEntity.swift */,
 				4410F36524AF789100700298 /* NetworkConfiguration.swift */,
+				44AA7CA624B3BA4100EF9071 /* PictureInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				4410F36424AF783200700298 /* NetworkWorker.swift in Sources */,
 				4410F32724AF3CF100700298 /* AppDelegate.swift in Sources */,
 				4410F36624AF789100700298 /* NetworkConfiguration.swift in Sources */,
+				44AA7CA724B3BA4100EF9071 /* PictureInfo.swift in Sources */,
 				4410F36024AF72A500700298 /* RetrievePictureWorker.swift in Sources */,
 				4410F32924AF3CF100700298 /* SceneDelegate.swift in Sources */,
 				449ACD1124AF9DD500288D41 /* PictureRouterProtocol.swift in Sources */,

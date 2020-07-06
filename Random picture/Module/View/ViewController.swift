@@ -11,6 +11,7 @@ import UIKit
 protocol PictureViewProtocol : class {
     var presenter: PicturePresenterProtocol? { get set }
     func set(viewModel: PictureViewModel)
+    func createAlert(title:String, message:String, actionTitle:String)
 }
 
 class ViewController: UIViewController {
@@ -52,4 +53,10 @@ extension ViewController: PictureViewProtocol {
             self.imageView.isHidden = false
         }
     }
+    
+    func createAlert(title:String, message:String, actionTitle:String) {
+          let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
+          let ok = UIAlertAction(title: actionTitle, style: .default, handler: nil)
+          dialogMessage.addAction(ok)
+      }
 }

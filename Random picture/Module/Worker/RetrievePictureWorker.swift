@@ -8,32 +8,72 @@
 
 import Foundation
 import UIKit
+import os.log
 
 protocol RetrievePictureWorkerProtocol {
-    func fetchPicture(with dimension: Dimension, callback:@escaping (PictureEntity) -> Void)
+    func fetchPicture(with dimension: Dimension, callback:@escaping (PictureEntity?,String?) -> Void)
+    func fetchPictureInfo(with id: Int, callback:@escaping(PictureInfo?,String?) -> Void)
+    func fetchPictureFullSize(with url:String, callback:@escaping(PictureEntity?, String?) -> Void)
 }
 
 class RetrievePictureWorker : RetrievePictureWorkerProtocol {
+    
     let networkWorker = NetworkWorker()
-    func prepareURL(_ dimension:Dimension) -> URL? {
-        let requestConfiguration = NetworkConfiguration(scheme: "https", host: "picsum.photos", port: 443, param: nil)
-        
-        return  networkWorker.makeURL(path: "/\(dimension.width)/\(dimension.height).jpg", configuration: requestConfiguration)
+    let requestConfiguration = NetworkConfiguration(scheme: "https", host: "picsum.photos", port: 443, param: nil)
+    
+    
+    func fetchPictureInfo(with id: Int, callback:@escaping(PictureInfo?,String?) -> Void) {
+        let url = networkWorker.makeURL(path: "/id/\(id)/info", configuration: requestConfiguration)
+        if let url = url {
+            networkWorker.httpRequest(url: url, httpMethod: "GET", body: nil, callback: { data, error, statusCode in
+                let decoder = JSONDecoder()
+                do {
+                    guard let response = data else {
+                        callback(nil, "Unknown response")
+                        return
+                    }
+                    if let json = String(data: response, encoding: .utf8),
+                        let jsonData = json.data(using: .utf8) {
+                        callback (try decoder.decode(PictureInfo.self, from: jsonData),nil)
+                    }
+                } catch {
+                    callback(nil, "Unable to parse data")
+                }
+            })
+        }
     }
     
-    func fetchPicture(with dimension: Dimension, callback:@escaping(PictureEntity) -> Void) {
-        let url = prepareURL(dimension)
+    func fetchPictureFullSize(with url:String, callback:@escaping(PictureEntity?, String?) -> Void) {
+        let imageURL = url.replacingOccurrences(of: "https://picsum.photos", with: "")
+        let url = networkWorker.makeURL(path: imageURL, configuration: requestConfiguration)
+        if let url = url {
+            networkWorker.httpRequest(url: url, httpMethod: "GET", body: nil, callback: { data, error, statusCode in
+                if statusCode == StatusCode.success,
+                    let data = data,
+                    let image = UIImage(data: data) {
+                    callback(PictureEntity(image: image, id: 42, dimension: nil), nil)
+                }
+                else {
+                    callback(nil, "Unable to get picture")
+                }
+            })
+        }
+    }
+    
+    func fetchPicture(with dimension: Dimension, callback:@escaping(PictureEntity?,String?) -> Void) {
+        let url = networkWorker.makeURL(path: "/\(dimension.width)/\(dimension.height).jpg", configuration: requestConfiguration)
         if let url = url {
             networkWorker.httpRequest(url: url, httpMethod: "GET", body: nil, callback: { data, error, statusCode in
                 let id = self.networkWorker.headerResponse["picsum-id"]
-                print("retrieve data and status code is \(id)")
                 if statusCode == StatusCode.success,
                     let data = data,
                     let image = UIImage(data: data),
                     let id = id as? String,
                     let idNum = Int(id) {
                     print("now callbacking")
-                    callback(PictureEntity (image: image, id: idNum, dimension: dimension))
+                    callback(PictureEntity (image: image, id: idNum, dimension: dimension), nil)
+                } else {
+                    callback(nil, "Unable to get picture")
                 }
             })
         }
