@@ -10,9 +10,8 @@ import Foundation
 import os.log
 
 class NetworkWorker {
-    var headerResponse = [AnyHashable : Any]()
-    
-    func makeURL(path: String, configuration:NetworkConfiguration) -> URL? {
+    var headerResponse = [AnyHashable: Any]()
+    func makeURL(path: String, configuration: NetworkConfiguration) -> URL? {
         var urlComponents = URLComponents()
         urlComponents.scheme = configuration.scheme
         urlComponents.host = configuration.host
@@ -26,14 +25,14 @@ class NetworkWorker {
         }
         return urlComponents.url
     }
-    func httpRequest(url: URL, httpMethod:String, body: String?, callback : @escaping (Data?, String?, StatusCode) -> Void ) {
+    func httpRequest(url: URL, httpMethod: String, body: String?,
+                     callback : @escaping (Data?, String?, StatusCode) -> Void ) {
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
         request.timeoutInterval = 10
         if let body = body {
             request.httpBody = body.data(using: .utf8)
         }
-        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {  // check for networking error
                 if let error = error {
@@ -49,17 +48,13 @@ class NetworkWorker {
                 if httpStatus.statusCode == 200 {
                     callback(data, nil, StatusCode.success)
                 } else {
-                    callback (nil, "Server error", StatusCode.error)
+                    callback(nil, "Server error", StatusCode.error)
                 }
             }
-            
-            
-            
         }
         task.resume()
     }
-    
-    func httpDataToText(data:Data) -> String? {
+    func httpDataToText(data: Data) -> String? {
         return String(data: data, encoding: .utf8)
     }
 }

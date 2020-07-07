@@ -9,9 +9,7 @@
 import Foundation
 
 protocol PictureRouterProtocol {
-    
 }
 
-class PictureRouter : PictureRouterProtocol {
-    
+class PictureRouter: PictureRouterProtocol {
 }

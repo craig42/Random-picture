@@ -10,13 +10,10 @@ import Foundation
 import UIKit
 
 class PictureBuilder {
-    
     class func buildModule(view: PictureViewProtocol) -> PictureViewProtocol {
-        
         let presenter = PicturePresenter()
         let interactor = PictureInteractor(withApiWorker: RetrievePictureWorker())
         let router = PictureRouter()
-        
         view.presenter = presenter
         presenter.view = view
         presenter.wireFrame = router

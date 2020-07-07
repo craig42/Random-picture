@@ -9,14 +9,13 @@
 import Foundation
 
 struct NetworkConfiguration {
-    let scheme : String
-    let host : String
-    let port : Int
-    let param : [String:String]?
+    let scheme: String
+    let host: String
+    let port: Int
+    let param: [String: String]?
     static let slash = "/"
 }
 
 enum StatusCode: Int {
     case success = 0, error, notUpdated, locationProblem, alreadyUpdated, connectionProblem
 }
-

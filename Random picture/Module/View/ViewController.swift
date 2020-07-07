@@ -8,42 +8,34 @@
 
 import UIKit
 
-protocol PictureViewProtocol : class {
+protocol PictureViewProtocol: class {
     var presenter: PicturePresenterProtocol? { get set }
     func set(viewModel: PictureViewModel)
-    func createAlert(title:String, message:String, actionTitle:String)
+    func createAlert(title: String, message: String, actionTitle: String)
 }
 
 class ViewController: UIViewController {
     var presenter: PicturePresenterProtocol?
-    
     @IBOutlet var imageView: UIImageView!
-  
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.fetchNewPicture(with: imageDimension())
     }
-    
     func imageDimension() -> Dimension {
         return Dimension(height: Int(Double(imageView.frame.height)), width: Int(Double(imageView.frame.width)))
     }
-    
     override var preferredStatusBarStyle: UIStatusBarStyle {
           return .lightContent
     }
-    
     @IBAction func saveImageButton(_ sender: Any) {
         presenter?.savePicture()
     }
-    
     @IBAction func aboutButton(_ sender: Any) {
         presenter?.aboutView()
     }
-    
     @IBAction func nextButton(_ sender: Any) {
         presenter?.fetchNewPicture(with: imageDimension())
     }
-      
 }
 
 extension ViewController: PictureViewProtocol {
@@ -53,11 +45,9 @@ extension ViewController: PictureViewProtocol {
             self.imageView.isHidden = false
         }
     }
-    
-    func createAlert(title:String, message:String, actionTitle:String) {
+    func createAlert(title: String, message: String, actionTitle: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-       
       }
 }

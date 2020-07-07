@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 struct PictureEntity {
-    let image : UIImage
-    let id : Int
-    let dimension : Dimension?
+    let image: UIImage
+    let pictureId: Int
+    let dimension: Dimension?
 }
 
 struct Dimension {
