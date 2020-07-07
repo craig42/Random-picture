@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
 protocol PictureInteractorProtocol {
     func fetchNewPicture(with dimension: Dimension)
     func savePicture()
 }
 
-class PictureInteractor: PictureInteractorProtocol {
+class PictureInteractor: NSObject, PictureInteractorProtocol {
     let apiWorker : RetrievePictureWorkerProtocol
     var pictureEntity:PictureEntity?
     
@@ -34,17 +35,32 @@ class PictureInteractor: PictureInteractorProtocol {
         })
     }
     
+    
     func savePicture() {
         if let id = self.pictureEntity?.id {
             apiWorker.fetchPictureInfo(with: id, callback: { pictureInfo, error in
                 if let pictureInfo = pictureInfo {
                     let url = pictureInfo.downloadURL
                     self.apiWorker.fetchPictureFullSize(with: url, callback: { pictureEntity,error in
+                        if let image = pictureEntity {
+                            UIImageWriteToSavedPhotosAlbum(image.image, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+                        }
+                        
                         // Do stuff to save image to camera roll
                         // Call presenter to indicate status of 
                     })
                 }
             })
+        }
+    }
+    
+    
+    @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if error != nil {
+            self.presenter?.saveResult(interactor: self, statusCode: StatusCode.error)
+        } else {
+            print("cool")
+            self.presenter?.saveResult(interactor: self, statusCode: StatusCode.success)
         }
     }
     

@@ -55,8 +55,9 @@ extension ViewController: PictureViewProtocol {
     }
     
     func createAlert(title:String, message:String, actionTitle:String) {
-          let dialogMessage = UIAlertController(title: title, message: message, preferredStyle: .alert)
-          let ok = UIAlertAction(title: actionTitle, style: .default, handler: nil)
-          dialogMessage.addAction(ok)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: actionTitle, style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+       
       }
 }

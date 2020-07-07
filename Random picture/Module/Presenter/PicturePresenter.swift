@@ -19,7 +19,7 @@ protocol PicturePresenterProtocol: class {
     
     func interactor(interactor: PictureInteractorProtocol, object: PictureEntity)
     
-    func saveInteractor(interactor: PictureInteractorProtocol, statusCode:StatusCode)
+    func saveResult(interactor: PictureInteractorProtocol, statusCode:StatusCode)
     
 }
 
@@ -42,7 +42,7 @@ extension PicturePresenter: PicturePresenterProtocol {
         view?.set(viewModel: pictureViewModel)
     }
     
-    func saveInteractor(interactor: PictureInteractorProtocol, statusCode:StatusCode) {
+    func saveResult(interactor: PictureInteractorProtocol, statusCode:StatusCode) {
         switch statusCode {
         case StatusCode.success:
             view?.createAlert(title: "Success", message: "Message saved into library", actionTitle: "Ok")
