@@ -14,6 +14,10 @@ protocol PictureInteractorProtocol {
     func savePicture()
 }
 
+protocol PictureDataStore {
+  var message: String? { get }
+}
+
 class PictureInteractor: NSObject, PictureInteractorProtocol {
     let apiWorker: RetrievePictureWorkerProtocol
     var pictureEntity: PictureEntity?
@@ -23,7 +27,7 @@ class PictureInteractor: NSObject, PictureInteractorProtocol {
     }
     func fetchNewPicture(with dimension: Dimension) {
         print("fetch picture form interactor")
-        apiWorker.fetchPicture(with: dimension, callback: { pictureEntity, error in
+        apiWorker.fetchPicture(with: dimension, callback: { pictureEntity, _ in
             print("I have the picture from intetactor")
             if let pictureEntity = pictureEntity {
                 self.pictureEntity = pictureEntity
@@ -33,10 +37,10 @@ class PictureInteractor: NSObject, PictureInteractorProtocol {
     }
     func savePicture() {
         if let pictureId = self.pictureEntity?.pictureId {
-            apiWorker.fetchPictureInfo(with: pictureId, callback: { pictureInfo, error in
+            apiWorker.fetchPictureInfo(with: pictureId, callback: { pictureInfo, _ in
                 if let pictureInfo = pictureInfo {
                     let url = pictureInfo.downloadURL
-                    self.apiWorker.fetchPictureFullSize(with: url, callback: { pictureEntity, error in
+                    self.apiWorker.fetchPictureFullSize(with: url, callback: { pictureEntity, _ in
                         if let image = pictureEntity {
                             UIImageWriteToSavedPhotosAlbum(image.image, self,
                                                            #selector

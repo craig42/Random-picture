@@ -23,18 +23,20 @@ class RetrievePictureWorker: RetrievePictureWorkerProtocol {
         let url = networkWorker.makeURL(path: "/id/\(pictureId)/info", configuration: requestConfiguration)
         if let url = url {
             networkWorker.httpRequest(url: url, httpMethod: "GET", body: nil, callback: { data, error, statusCode in
-                let decoder = JSONDecoder()
-                do {
-                    guard let response = data else {
-                        callback(nil, "Unknown response")
-                        return
+                if statusCode == StatusCode.success {
+                    let decoder = JSONDecoder()
+                    do {
+                        guard let response = data else {
+                            callback(nil, "Unknown response : \(error ?? "unknown reason")")
+                            return
+                        }
+                        if let json = String(data: response, encoding: .utf8),
+                            let jsonData = json.data(using: .utf8) {
+                            callback(try decoder.decode(PictureInfo.self, from: jsonData), nil)
+                        }
+                    } catch {
+                        callback(nil, "Unable to parse data")
                     }
-                    if let json = String(data: response, encoding: .utf8),
-                        let jsonData = json.data(using: .utf8) {
-                        callback(try decoder.decode(PictureInfo.self, from: jsonData), nil)
-                    }
-                } catch {
-                    callback(nil, "Unable to parse data")
                 }
             })
         }
@@ -49,7 +51,7 @@ class RetrievePictureWorker: RetrievePictureWorkerProtocol {
                     let image = UIImage(data: data) {
                     callback(PictureEntity(image: image, pictureId: 42, dimension: nil), nil)
                 } else {
-                    callback(nil, "Unable to get picture")
+                    callback(nil, "Unable to get picture \(error ?? "unknown reason")")
                 }
             })
         }
@@ -68,7 +70,7 @@ class RetrievePictureWorker: RetrievePictureWorkerProtocol {
                     print("now callbacking")
                     callback(PictureEntity(image: image, pictureId: idNum, dimension: dimension), nil)
                 } else {
-                    callback(nil, "Unable to get picture")
+                    callback(nil, "Unable to get picture \(error ?? "unknow reason")")
                 }
             })
         }

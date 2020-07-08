@@ -24,6 +24,7 @@
 		449ACD1124AF9DD500288D41 /* PictureRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACD1024AF9DD500288D41 /* PictureRouterProtocol.swift */; };
 		449ACD1324AFBA0C00288D41 /* PictureBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACD1224AFBA0C00288D41 /* PictureBuilder.swift */; };
 		44AA7CA724B3BA4100EF9071 /* PictureInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA7CA624B3BA4100EF9071 /* PictureInfo.swift */; };
+		44DDB96324B5A061007ED0B2 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDB96224B5A061007ED0B2 /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		449ACD1024AF9DD500288D41 /* PictureRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureRouterProtocol.swift; sourceTree = "<group>"; };
 		449ACD1224AFBA0C00288D41 /* PictureBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureBuilder.swift; sourceTree = "<group>"; };
 		44AA7CA624B3BA4100EF9071 /* PictureInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureInfo.swift; sourceTree = "<group>"; };
+		44DDB96224B5A061007ED0B2 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,9 +122,11 @@
 			children = (
 				4410F35624AF3D0700700298 /* Random picture.entitlements */,
 				4410F32624AF3CF100700298 /* AppDelegate.swift */,
+				44DDB96424B5A3A1007ED0B2 /* Picture */,
+				44DDB96524B5A413007ED0B2 /* Details */,
 				4410F35E24AF707100700298 /* Module */,
 				4410F32824AF3CF100700298 /* SceneDelegate.swift */,
-				4410F33124AF3CF300700298 /* LaunchScreen.storyboard */,
+				44DDB96724B5A4F4007ED0B2 /* Storyboards */,
 				4410F32F24AF3CF300700298 /* Assets.xcassets */,
 				4410F33424AF3CF300700298 /* Info.plist */,
 			);
@@ -145,16 +149,6 @@
 				4410F34A24AF3CF300700298 /* Info.plist */,
 			);
 			path = "Random pictureUITests";
-			sourceTree = "<group>";
-		};
-		4410F35824AF6FD300700298 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				4410F36124AF73A900700298 /* PictureEntity.swift */,
-				4410F36524AF789100700298 /* NetworkConfiguration.swift */,
-				44AA7CA624B3BA4100EF9071 /* PictureInfo.swift */,
-			);
-			path = Entity;
 			sourceTree = "<group>";
 		};
 		4410F35924AF6FDC00700298 /* Router */ = {
@@ -186,7 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				4410F32A24AF3CF100700298 /* ViewController.swift */,
-				4410F32C24AF3CF100700298 /* Main.storyboard */,
+				44DDB96224B5A061007ED0B2 /* DetailsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -202,15 +196,48 @@
 		4410F35E24AF707100700298 /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				4410F35824AF6FD300700298 /* Entity */,
-				4410F35A24AF6FEC00700298 /* Worker */,
-				4410F35924AF6FDC00700298 /* Router */,
-				4410F35B24AF6FFA00700298 /* Interactor */,
-				4410F35D24AF701500700298 /* Presenter */,
-				4410F35C24AF700700700298 /* View */,
 				449ACD1224AFBA0C00288D41 /* PictureBuilder.swift */,
 			);
 			path = Module;
+			sourceTree = "<group>";
+		};
+		44DDB96424B5A3A1007ED0B2 /* Picture */ = {
+			isa = PBXGroup;
+			children = (
+				44DDB96624B5A44E007ED0B2 /* Entity */,
+				4410F35A24AF6FEC00700298 /* Worker */,
+				4410F35B24AF6FFA00700298 /* Interactor */,
+				4410F35924AF6FDC00700298 /* Router */,
+				4410F35D24AF701500700298 /* Presenter */,
+				4410F35C24AF700700700298 /* View */,
+			);
+			path = Picture;
+			sourceTree = "<group>";
+		};
+		44DDB96524B5A413007ED0B2 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		44DDB96624B5A44E007ED0B2 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				4410F36124AF73A900700298 /* PictureEntity.swift */,
+				4410F36524AF789100700298 /* NetworkConfiguration.swift */,
+				44AA7CA624B3BA4100EF9071 /* PictureInfo.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		44DDB96724B5A4F4007ED0B2 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				4410F32C24AF3CF100700298 /* Main.storyboard */,
+				4410F33124AF3CF300700298 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,6 +403,7 @@
 				44AA7CA724B3BA4100EF9071 /* PictureInfo.swift in Sources */,
 				4410F36024AF72A500700298 /* RetrievePictureWorker.swift in Sources */,
 				4410F32924AF3CF100700298 /* SceneDelegate.swift in Sources */,
+				44DDB96324B5A061007ED0B2 /* DetailsViewController.swift in Sources */,
 				449ACD1124AF9DD500288D41 /* PictureRouterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
