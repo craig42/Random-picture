@@ -32,25 +32,30 @@ class PictureInteractor: NSObject, PictureInteractorProtocol, PictureDataStore {
             print("I have the picture from intetactor")
             if let pictureEntity = pictureEntity {
                 self.pictureEntity = pictureEntity
-                self.presenter?.interactor(interactor: self, object: pictureEntity)
+                self.apiWorker.fetchPictureInfo(with: pictureEntity.pictureId, callback: { pictureInfo, _ in
+                    if let pictureInfo = pictureInfo {
+                        self.message = pictureInfo.author
+                        self.pictureEntity?.author = pictureInfo.author
+                        self.pictureEntity?.downloadURLFullSize = pictureInfo.downloadURL
+                        self.presenter?.interactor(interactor: self, object: pictureEntity)
+                    }
+                })
             }
         })
     }
     func savePicture() {
-        if let pictureId = self.pictureEntity?.pictureId {
-            apiWorker.fetchPictureInfo(with: pictureId, callback: { pictureInfo, _ in
-                if let pictureInfo = pictureInfo {
-                    let url = pictureInfo.downloadURL
-                    self.apiWorker.fetchPictureFullSize(with: url, callback: { pictureEntity, _ in
-                        if let image = pictureEntity {
-                            UIImageWriteToSavedPhotosAlbum(image.image, self,
-                                                           #selector
-                                                            (self.image(_:didFinishSavingWithError:contextInfo:)),
-                                                           nil)
-                        }
-                    })
+        if let pictureEntity = pictureEntity,
+            let downloadUrl = pictureEntity.downloadURLFullSize {
+            self.apiWorker.fetchPictureFullSize(with: downloadUrl, callback: { pictureEntity, _ in
+                if let image = pictureEntity {
+                    UIImageWriteToSavedPhotosAlbum(
+                        image.image, self,
+                        #selector(self.image(_:didFinishSavingWithError:contextInfo:)),
+                        nil)
                 }
             })
+        } else {
+            self.presenter?.saveResult(interactor: self, statusCode: StatusCode.error)
         }
     }
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {

@@ -15,10 +15,11 @@ class PictureBuilder {
         let interactor = PictureInteractor(withApiWorker: RetrievePictureWorker())
         let router = PictureRouter()
         view.presenter = presenter
+        view.wireFrame = router
         presenter.view = view
-        presenter.wireFrame = router
         presenter.interactor = interactor
         interactor.presenter = presenter
+        router.dataStore = interactor
         return view
     }
 }

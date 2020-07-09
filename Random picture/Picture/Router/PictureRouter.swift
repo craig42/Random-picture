@@ -6,33 +6,28 @@
 //  Copyright © 2020 Craig Josse. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-protocol PictureRouterProtocol {
-    func routeToDetail(segue: UIStoryboardSegue)
+@objc protocol PictureRouterProtocol {
+    func routeToDetails(segue: UIStoryboardSegue)
 }
 
 protocol PictureDataPassing {
-  var dataStore: PictureDataStore? { get }
+    var dataStore: PictureDataStore? { get }
 }
 
 class PictureRouter: NSObject, PictureRouterProtocol {
     weak var viewController: ViewController?
     var dataStore: PictureDataStore?
-    
-
-
-    func routeToDetail(segue: UIStoryboardSegue) {
+    func routeToDetails(segue: UIStoryboardSegue) {
         let homeDS = dataStore
         let detailVC = segue.destination as? DetailsViewController
         var detailDS = detailVC?.router?.dataStore
+        print("dataStore : \(homeDS)")
+        print("detailDS : \(detailDS)")
         passDataToDetail(source: homeDS!, destination: &(detailDS)!)
-
-        }
-    
+    }
     private func passDataToDetail(source: PictureDataStore, destination: inout DetailsDataStore) {
         destination.message = source.message
-     }
     }
-
+}

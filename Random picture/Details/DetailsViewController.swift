@@ -54,17 +54,16 @@ class DetailsViewController: UIViewController, DetailsDisplayLogic {
   // MARK: View lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    doSomething()
+    retrieveText()
   }
-  // MARK: Do something
-  //@IBOutlet weak var nameTextField: UITextField!
     @IBOutlet var detailsTextField: UILabel!
     @IBAction func okButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
-  func doSomething() {
-    interactor?.doSomething()
+  func retrieveText() {
+    interactor?.retrieveText()
   }
     func displaySomething(viewModel: Details.ViewModel) {
-    detailsTextField.text = "test"
+        detailsTextField.text = viewModel.message
   }
 }

@@ -39,8 +39,7 @@
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <state key="normal" title="❓"/>
                                 <connections>
-                                    <action selector="aboutButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jXV-XE-1lE"/>
-                                    <segue destination="Y0H-Dw-Nxa" kind="showDetail" id="cSx-Nh-5DH"/>
+                                    <segue destination="Y0H-Dw-Nxa" kind="show" identifier="Details" id="cSx-Nh-5DH"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -104,6 +103,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9pW-uh-ycH"/>
                     </view>
+                    <navigationItem key="navigationItem" id="GjB-Xa-1dx"/>
                     <connections>
                         <outlet property="detailsTextField" destination="F0w-69-Nni" id="xfo-zn-U2W"/>
                     </connections>

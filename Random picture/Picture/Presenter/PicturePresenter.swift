@@ -6,13 +6,11 @@
 //  Copyright © 2020 Craig Josse. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 protocol PicturePresenterProtocol: class {
     func fetchNewPicture(with dimension: Dimension)
     func savePicture()
-    func aboutView()
     func interactor(interactor: PictureInteractorProtocol, object: PictureEntity)
     func saveResult(interactor: PictureInteractorProtocol, statusCode: StatusCode)
 }
@@ -24,7 +22,6 @@ struct PictureViewModel {
 class PicturePresenter {
     var view: PictureViewProtocol?
     var interactor: PictureInteractorProtocol?
-    var wireFrame: PictureRouterProtocol?
 }
 
 extension PicturePresenter: PicturePresenterProtocol {
@@ -51,8 +48,5 @@ extension PicturePresenter: PicturePresenterProtocol {
     func savePicture() {
         print("save picture from presenter")
         interactor?.savePicture()
-    }
-    func aboutView() {
-        print("about")
     }
 }

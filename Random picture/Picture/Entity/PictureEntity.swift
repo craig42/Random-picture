@@ -13,6 +13,8 @@ struct PictureEntity {
     let image: UIImage
     let pictureId: Int
     let dimension: Dimension?
+    var author: String?
+    var downloadURLFullSize: String?
 }
 
 struct Dimension {

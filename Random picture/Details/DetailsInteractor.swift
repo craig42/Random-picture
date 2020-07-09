@@ -13,7 +13,7 @@
 import UIKit
 
 protocol DetailsBusinessLogic {
-  func doSomething()
+  func retrieveText()
 }
 
 protocol DetailsDataStore {
@@ -24,13 +24,14 @@ class DetailsInteractor: DetailsBusinessLogic, DetailsDataStore {
     var message: String?
   var presenter: DetailsPresentationLogic?
   var worker: DetailsWorker?
-  func doSomething() {
+  func retrieveText() {
     worker = DetailsWorker()
     let detailDataMessage = Details.DetailsText(message:
     """
-    You can find these photos
-    on the unsplash website.\nAuthor :
-    """)
+        You can find these pictures on the Unsplash website.
+        Author of the current picture :
+        \(message ?? "")
+        """)
     presenter?.presentSomething(data: detailDataMessage)
   }
 }
