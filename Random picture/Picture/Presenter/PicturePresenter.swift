@@ -27,7 +27,6 @@ class PicturePresenter {
 extension PicturePresenter: PicturePresenterProtocol {
     func interactor(interactor: PictureInteractorProtocol, object: PictureEntity) {
         let pictureViewModel = PictureViewModel(image: object.image)
-        print("I'm setting to the view : \(pictureViewModel.image)")
         view?.set(viewModel: pictureViewModel)
     }
     func saveResult(interactor: PictureInteractorProtocol, statusCode: StatusCode) {
@@ -42,11 +41,9 @@ extension PicturePresenter: PicturePresenterProtocol {
         }
     }
     func fetchNewPicture(with dimension: Dimension) {
-        print("fetch picture from presenter")
         interactor?.fetchNewPicture(with: dimension)
     }
     func savePicture() {
-        print("save picture from presenter")
         interactor?.savePicture()
     }
 }

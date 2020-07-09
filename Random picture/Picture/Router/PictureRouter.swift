@@ -20,12 +20,13 @@ class PictureRouter: NSObject, PictureRouterProtocol {
     weak var viewController: ViewController?
     var dataStore: PictureDataStore?
     func routeToDetails(segue: UIStoryboardSegue) {
-        let homeDS = dataStore
-        let detailVC = segue.destination as? DetailsViewController
-        var detailDS = detailVC?.router?.dataStore
-        print("dataStore : \(homeDS)")
-        print("detailDS : \(detailDS)")
-        passDataToDetail(source: homeDS!, destination: &(detailDS)!)
+        let pictureDS = dataStore
+        let detailsVC = segue.destination as? DetailsViewController
+        let detailsDS = detailsVC?.router?.dataStore
+        if let pictureDS = pictureDS,
+            var detailsDS = detailsDS {
+            passDataToDetail(source: pictureDS, destination: &(detailsDS))
+        }
     }
     private func passDataToDetail(source: PictureDataStore, destination: inout DetailsDataStore) {
         destination.message = source.message

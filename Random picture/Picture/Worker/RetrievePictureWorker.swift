@@ -67,7 +67,6 @@ class RetrievePictureWorker: RetrievePictureWorkerProtocol {
                     let image = UIImage(data: data),
                     let pictureId = pictureId as? String,
                     let idNum = Int(pictureId) {
-                    print("now callbacking")
                     callback(PictureEntity(image: image, pictureId: idNum, dimension: dimension), nil)
                 } else {
                     callback(nil, "Unable to get picture \(error ?? "unknow reason")")

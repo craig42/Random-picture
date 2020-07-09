@@ -27,9 +27,7 @@ class PictureInteractor: NSObject, PictureInteractorProtocol, PictureDataStore {
         self.apiWorker = apiWorker
     }
     func fetchNewPicture(with dimension: Dimension) {
-        print("fetch picture form interactor")
         apiWorker.fetchPicture(with: dimension, callback: { pictureEntity, _ in
-            print("I have the picture from intetactor")
             if let pictureEntity = pictureEntity {
                 self.pictureEntity = pictureEntity
                 self.apiWorker.fetchPictureInfo(with: pictureEntity.pictureId, callback: { pictureInfo, _ in
@@ -62,7 +60,6 @@ class PictureInteractor: NSObject, PictureInteractorProtocol, PictureDataStore {
         if error != nil {
             self.presenter?.saveResult(interactor: self, statusCode: StatusCode.error)
         } else {
-            print("cool")
             self.presenter?.saveResult(interactor: self, statusCode: StatusCode.success)
         }
     }

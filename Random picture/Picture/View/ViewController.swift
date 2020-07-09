@@ -36,11 +36,8 @@ class ViewController: UIViewController {
         presenter?.fetchNewPicture(with: imageDimension())
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("Prepare")
         if let scene = segue.identifier {
             let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            print("SELECTOR \(selector)")
-            print(wireFrame?.responds(to: selector))
             if let router = wireFrame, router.responds(to: selector) {
                 router.perform(selector, with: segue)
             }
