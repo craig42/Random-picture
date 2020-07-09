@@ -19,14 +19,20 @@ protocol PictureDataPassing {
 
 class PictureRouter: NSObject, PictureRouterProtocol {
     weak var viewController: ViewController?
+    var dataStore: PictureDataStore?
+    
 
 
     func routeToDetail(segue: UIStoryboardSegue) {
+        let homeDS = dataStore
         let detailVC = segue.destination as? DetailsViewController
-        //let detailDS = detailVC.router?.dataStore
+        var detailDS = detailVC?.router?.dataStore
+        passDataToDetail(source: homeDS!, destination: &(detailDS)!)
 
-        //passDataToDetail(source: homeDS, destination: &detailDS)
-            
         }
+    
+    private func passDataToDetail(source: PictureDataStore, destination: inout DetailsDataStore) {
+        destination.message = source.message
+     }
     }
 

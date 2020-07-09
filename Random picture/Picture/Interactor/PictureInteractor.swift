@@ -18,7 +18,8 @@ protocol PictureDataStore {
   var message: String? { get }
 }
 
-class PictureInteractor: NSObject, PictureInteractorProtocol {
+class PictureInteractor: NSObject, PictureInteractorProtocol, PictureDataStore {
+    var message: String?
     let apiWorker: RetrievePictureWorkerProtocol
     var pictureEntity: PictureEntity?
     var presenter: PicturePresenterProtocol?

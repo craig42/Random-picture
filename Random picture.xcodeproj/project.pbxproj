@@ -21,10 +21,15 @@
 		4410F36624AF789100700298 /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F36524AF789100700298 /* NetworkConfiguration.swift */; };
 		4410F36824AF91B100700298 /* PictureInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F36724AF91B100700298 /* PictureInteractor.swift */; };
 		4410F36A24AF943800700298 /* PicturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F36924AF943800700298 /* PicturePresenter.swift */; };
+		4456904824B5AA8D00F49CCC /* DetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456904224B5AA8D00F49CCC /* DetailsPresenter.swift */; };
+		4456904924B5AA8D00F49CCC /* DetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456904324B5AA8D00F49CCC /* DetailsWorker.swift */; };
+		4456904A24B5AA8D00F49CCC /* DetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456904424B5AA8D00F49CCC /* DetailsRouter.swift */; };
+		4456904B24B5AA8D00F49CCC /* DetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456904524B5AA8D00F49CCC /* DetailsModels.swift */; };
+		4456904C24B5AA8D00F49CCC /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456904624B5AA8D00F49CCC /* DetailsViewController.swift */; };
+		4456904D24B5AA8D00F49CCC /* DetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456904724B5AA8D00F49CCC /* DetailsInteractor.swift */; };
 		449ACD1124AF9DD500288D41 /* PictureRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACD1024AF9DD500288D41 /* PictureRouterProtocol.swift */; };
 		449ACD1324AFBA0C00288D41 /* PictureBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACD1224AFBA0C00288D41 /* PictureBuilder.swift */; };
 		44AA7CA724B3BA4100EF9071 /* PictureInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA7CA624B3BA4100EF9071 /* PictureInfo.swift */; };
-		44DDB96324B5A061007ED0B2 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DDB96224B5A061007ED0B2 /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,10 +71,15 @@
 		4410F36524AF789100700298 /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
 		4410F36724AF91B100700298 /* PictureInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureInteractor.swift; sourceTree = "<group>"; };
 		4410F36924AF943800700298 /* PicturePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePresenter.swift; sourceTree = "<group>"; };
+		4456904224B5AA8D00F49CCC /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
+		4456904324B5AA8D00F49CCC /* DetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsWorker.swift; sourceTree = "<group>"; };
+		4456904424B5AA8D00F49CCC /* DetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRouter.swift; sourceTree = "<group>"; };
+		4456904524B5AA8D00F49CCC /* DetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModels.swift; sourceTree = "<group>"; };
+		4456904624B5AA8D00F49CCC /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		4456904724B5AA8D00F49CCC /* DetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractor.swift; sourceTree = "<group>"; };
 		449ACD1024AF9DD500288D41 /* PictureRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureRouterProtocol.swift; sourceTree = "<group>"; };
 		449ACD1224AFBA0C00288D41 /* PictureBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureBuilder.swift; sourceTree = "<group>"; };
 		44AA7CA624B3BA4100EF9071 /* PictureInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureInfo.swift; sourceTree = "<group>"; };
-		44DDB96224B5A061007ED0B2 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,7 +134,7 @@
 				4410F32624AF3CF100700298 /* AppDelegate.swift */,
 				44DDB96424B5A3A1007ED0B2 /* Picture */,
 				44DDB96524B5A413007ED0B2 /* Details */,
-				4410F35E24AF707100700298 /* Module */,
+				449ACD1224AFBA0C00288D41 /* PictureBuilder.swift */,
 				4410F32824AF3CF100700298 /* SceneDelegate.swift */,
 				44DDB96724B5A4F4007ED0B2 /* Storyboards */,
 				4410F32F24AF3CF300700298 /* Assets.xcassets */,
@@ -180,7 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				4410F32A24AF3CF100700298 /* ViewController.swift */,
-				44DDB96224B5A061007ED0B2 /* DetailsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,14 +200,6 @@
 				4410F36924AF943800700298 /* PicturePresenter.swift */,
 			);
 			path = Presenter;
-			sourceTree = "<group>";
-		};
-		4410F35E24AF707100700298 /* Module */ = {
-			isa = PBXGroup;
-			children = (
-				449ACD1224AFBA0C00288D41 /* PictureBuilder.swift */,
-			);
-			path = Module;
 			sourceTree = "<group>";
 		};
 		44DDB96424B5A3A1007ED0B2 /* Picture */ = {
@@ -217,6 +218,12 @@
 		44DDB96524B5A413007ED0B2 /* Details */ = {
 			isa = PBXGroup;
 			children = (
+				4456904524B5AA8D00F49CCC /* DetailsModels.swift */,
+				4456904324B5AA8D00F49CCC /* DetailsWorker.swift */,
+				4456904724B5AA8D00F49CCC /* DetailsInteractor.swift */,
+				4456904424B5AA8D00F49CCC /* DetailsRouter.swift */,
+				4456904224B5AA8D00F49CCC /* DetailsPresenter.swift */,
+				4456904624B5AA8D00F49CCC /* DetailsViewController.swift */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -393,17 +400,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				449ACD1324AFBA0C00288D41 /* PictureBuilder.swift in Sources */,
+				4456904D24B5AA8D00F49CCC /* DetailsInteractor.swift in Sources */,
 				4410F32B24AF3CF100700298 /* ViewController.swift in Sources */,
 				4410F36824AF91B100700298 /* PictureInteractor.swift in Sources */,
 				4410F36A24AF943800700298 /* PicturePresenter.swift in Sources */,
+				4456904924B5AA8D00F49CCC /* DetailsWorker.swift in Sources */,
 				4410F36224AF73A900700298 /* PictureEntity.swift in Sources */,
 				4410F36424AF783200700298 /* NetworkWorker.swift in Sources */,
 				4410F32724AF3CF100700298 /* AppDelegate.swift in Sources */,
+				4456904B24B5AA8D00F49CCC /* DetailsModels.swift in Sources */,
+				4456904C24B5AA8D00F49CCC /* DetailsViewController.swift in Sources */,
 				4410F36624AF789100700298 /* NetworkConfiguration.swift in Sources */,
 				44AA7CA724B3BA4100EF9071 /* PictureInfo.swift in Sources */,
+				4456904824B5AA8D00F49CCC /* DetailsPresenter.swift in Sources */,
 				4410F36024AF72A500700298 /* RetrievePictureWorker.swift in Sources */,
 				4410F32924AF3CF100700298 /* SceneDelegate.swift in Sources */,
-				44DDB96324B5A061007ED0B2 /* DetailsViewController.swift in Sources */,
+				4456904A24B5AA8D00F49CCC /* DetailsRouter.swift in Sources */,
 				449ACD1124AF9DD500288D41 /* PictureRouterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
