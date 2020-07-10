@@ -9,7 +9,7 @@
 import Foundation
 import os.log
 
-class NetworkWorker {
+class NetworkUtilities {
     var headerResponse = [AnyHashable: Any]()
     func makeURL(path: String, configuration: NetworkConfiguration) -> URL? {
         var urlComponents = URLComponents()

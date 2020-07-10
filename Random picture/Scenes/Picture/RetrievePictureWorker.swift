@@ -17,7 +17,7 @@ protocol RetrievePictureWorkerProtocol {
 }
 
 class RetrievePictureWorker: RetrievePictureWorkerProtocol {
-    let networkWorker = NetworkWorker()
+    let networkWorker = NetworkUtilities()
     let requestConfiguration = NetworkConfiguration(scheme: "https", host: "picsum.photos", port: 443, param: nil)
     func fetchPictureInfo(with pictureId: Int, callback:@escaping(Picture.Info?, String?) -> Void) {
         let url = networkWorker.makeURL(path: "/id/\(pictureId)/info", configuration: requestConfiguration)
