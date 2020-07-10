@@ -23,8 +23,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         presenter?.fetchNewPicture(with: imageDimension())
     }
-    func imageDimension() -> Dimension {
-        return Dimension(height: Int(Double(imageView.frame.height)), width: Int(Double(imageView.frame.width)))
+    func imageDimension() -> Picture.Dimension {
+        return Picture.Dimension(height: Int(Double(imageView.frame.height)), width: Int(Double(imageView.frame.width)))
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent

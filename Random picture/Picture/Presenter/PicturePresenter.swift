@@ -9,9 +9,9 @@
 import UIKit
 
 protocol PicturePresenterProtocol: class {
-    func fetchNewPicture(with dimension: Dimension)
+    func fetchNewPicture(with dimension: Picture.Dimension)
     func savePicture()
-    func interactor(interactor: PictureInteractorProtocol, object: PictureEntity)
+    func interactor(interactor: PictureInteractorProtocol, object: Picture.Entity)
     func saveResult(interactor: PictureInteractorProtocol, statusCode: StatusCode)
 }
 
@@ -25,7 +25,7 @@ class PicturePresenter {
 }
 
 extension PicturePresenter: PicturePresenterProtocol {
-    func interactor(interactor: PictureInteractorProtocol, object: PictureEntity) {
+    func interactor(interactor: PictureInteractorProtocol, object: Picture.Entity) {
         let pictureViewModel = PictureViewModel(image: object.image)
         view?.set(viewModel: pictureViewModel)
     }
@@ -44,7 +44,7 @@ extension PicturePresenter: PicturePresenterProtocol {
         }
         #endif
     }
-    func fetchNewPicture(with dimension: Dimension) {
+    func fetchNewPicture(with dimension: Picture.Dimension) {
         interactor?.fetchNewPicture(with: dimension)
     }
     func savePicture() {

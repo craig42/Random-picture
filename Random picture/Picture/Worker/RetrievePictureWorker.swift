@@ -11,9 +11,9 @@ import UIKit
 import os.log
 
 protocol RetrievePictureWorkerProtocol {
-    func fetchPicture(with dimension: Dimension, callback:@escaping (PictureEntity?, String?) -> Void)
+    func fetchPicture(with dimension: Picture.Dimension, callback:@escaping (Picture.Entity?, String?) -> Void)
     func fetchPictureInfo(with pictureId: Int, callback:@escaping(PictureInfo?, String?) -> Void)
-    func fetchPictureFullSize(with url: String, callback:@escaping(PictureEntity?, String?) -> Void)
+    func fetchPictureFullSize(with url: String, callback:@escaping(Picture.Entity?, String?) -> Void)
 }
 
 class RetrievePictureWorker: RetrievePictureWorkerProtocol {
@@ -41,7 +41,7 @@ class RetrievePictureWorker: RetrievePictureWorkerProtocol {
             })
         }
     }
-    func fetchPictureFullSize(with url: String, callback:@escaping(PictureEntity?, String?) -> Void) {
+    func fetchPictureFullSize(with url: String, callback:@escaping(Picture.Entity?, String?) -> Void) {
         let imageURL = url.replacingOccurrences(of: "https://picsum.photos", with: "")
         let url = networkWorker.makeURL(path: imageURL, configuration: requestConfiguration)
         if let url = url {
@@ -49,14 +49,14 @@ class RetrievePictureWorker: RetrievePictureWorkerProtocol {
                 if statusCode == StatusCode.success,
                     let data = data,
                     let image = UIImage(data: data) {
-                    callback(PictureEntity(image: image, pictureId: 42, dimension: nil), nil)
+                    callback(Picture.Entity(image: image, pictureId: 42, dimension: nil), nil)
                 } else {
                     callback(nil, "Unable to get picture \(error ?? "unknown reason")")
                 }
             })
         }
     }
-    func fetchPicture(with dimension: Dimension, callback:@escaping(PictureEntity?, String?) -> Void) {
+    func fetchPicture(with dimension: Picture.Dimension, callback:@escaping(Picture.Entity?, String?) -> Void) {
         let url = networkWorker.makeURL(path: "/\(dimension.width)/\(dimension.height).jpg",
             configuration: requestConfiguration)
         if let url = url {
@@ -67,7 +67,7 @@ class RetrievePictureWorker: RetrievePictureWorkerProtocol {
                     let image = UIImage(data: data),
                     let pictureId = pictureId as? String,
                     let idNum = Int(pictureId) {
-                    callback(PictureEntity(image: image, pictureId: idNum, dimension: dimension), nil)
+                    callback(Picture.Entity(image: image, pictureId: idNum, dimension: dimension), nil)
                 } else {
                     callback(nil, "Unable to get picture \(error ?? "unknow reason")")
                 }

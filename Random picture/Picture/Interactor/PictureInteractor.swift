@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol PictureInteractorProtocol {
-    func fetchNewPicture(with dimension: Dimension)
+    func fetchNewPicture(with dimension: Picture.Dimension)
     func savePicture()
 }
 
@@ -21,12 +21,12 @@ protocol PictureDataStore {
 class PictureInteractor: NSObject, PictureInteractorProtocol, PictureDataStore {
     var message: String?
     let apiWorker: RetrievePictureWorkerProtocol
-    var pictureEntity: PictureEntity?
+    var pictureEntity: Picture.Entity?
     var presenter: PicturePresenterProtocol?
     required init(withApiWorker apiWorker: RetrievePictureWorkerProtocol) {
         self.apiWorker = apiWorker
     }
-    func fetchNewPicture(with dimension: Dimension) {
+    func fetchNewPicture(with dimension: Picture.Dimension) {
         apiWorker.fetchPicture(with: dimension, callback: { pictureEntity, _ in
             if let pictureEntity = pictureEntity {
                 self.pictureEntity = pictureEntity
