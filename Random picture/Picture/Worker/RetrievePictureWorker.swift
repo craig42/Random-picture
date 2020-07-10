@@ -12,14 +12,14 @@ import os.log
 
 protocol RetrievePictureWorkerProtocol {
     func fetchPicture(with dimension: Picture.Dimension, callback:@escaping (Picture.Entity?, String?) -> Void)
-    func fetchPictureInfo(with pictureId: Int, callback:@escaping(PictureInfo?, String?) -> Void)
+    func fetchPictureInfo(with pictureId: Int, callback:@escaping(Picture.Info?, String?) -> Void)
     func fetchPictureFullSize(with url: String, callback:@escaping(Picture.Entity?, String?) -> Void)
 }
 
 class RetrievePictureWorker: RetrievePictureWorkerProtocol {
     let networkWorker = NetworkWorker()
     let requestConfiguration = NetworkConfiguration(scheme: "https", host: "picsum.photos", port: 443, param: nil)
-    func fetchPictureInfo(with pictureId: Int, callback:@escaping(PictureInfo?, String?) -> Void) {
+    func fetchPictureInfo(with pictureId: Int, callback:@escaping(Picture.Info?, String?) -> Void) {
         let url = networkWorker.makeURL(path: "/id/\(pictureId)/info", configuration: requestConfiguration)
         if let url = url {
             networkWorker.httpRequest(url: url, httpMethod: "GET", body: nil, callback: { data, error, statusCode in
@@ -32,7 +32,7 @@ class RetrievePictureWorker: RetrievePictureWorkerProtocol {
                         }
                         if let json = String(data: response, encoding: .utf8),
                             let jsonData = json.data(using: .utf8) {
-                            callback(try decoder.decode(PictureInfo.self, from: jsonData), nil)
+                            callback(try decoder.decode(Picture.Info.self, from: jsonData), nil)
                         }
                     } catch {
                         callback(nil, "Unable to parse data")

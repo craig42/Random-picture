@@ -16,7 +16,7 @@
 		4410F33E24AF3CF300700298 /* Random_pictureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F33D24AF3CF300700298 /* Random_pictureTests.swift */; };
 		4410F34924AF3CF300700298 /* Random_pictureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F34824AF3CF300700298 /* Random_pictureUITests.swift */; };
 		4410F36024AF72A500700298 /* RetrievePictureWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F35F24AF72A500700298 /* RetrievePictureWorker.swift */; };
-		4410F36224AF73A900700298 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F36124AF73A900700298 /* Entity.swift */; };
+		4410F36224AF73A900700298 /* PictureEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F36124AF73A900700298 /* PictureEntity.swift */; };
 		4410F36424AF783200700298 /* NetworkWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F36324AF783200700298 /* NetworkWorker.swift */; };
 		4410F36624AF789100700298 /* NetworkConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F36524AF789100700298 /* NetworkConfiguration.swift */; };
 		4410F36824AF91B100700298 /* PictureInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410F36724AF91B100700298 /* PictureInteractor.swift */; };
@@ -29,7 +29,6 @@
 		4456904D24B5AA8D00F49CCC /* DetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4456904724B5AA8D00F49CCC /* DetailsInteractor.swift */; };
 		449ACD1124AF9DD500288D41 /* PictureRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACD1024AF9DD500288D41 /* PictureRouter.swift */; };
 		449ACD1324AFBA0C00288D41 /* PictureBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449ACD1224AFBA0C00288D41 /* PictureBuilder.swift */; };
-		44AA7CA724B3BA4100EF9071 /* PictureInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA7CA624B3BA4100EF9071 /* PictureInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,7 +65,7 @@
 		4410F34A24AF3CF300700298 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4410F35624AF3D0700700298 /* Random picture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Random picture.entitlements"; sourceTree = "<group>"; };
 		4410F35F24AF72A500700298 /* RetrievePictureWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrievePictureWorker.swift; sourceTree = "<group>"; };
-		4410F36124AF73A900700298 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		4410F36124AF73A900700298 /* PictureEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureEntity.swift; sourceTree = "<group>"; };
 		4410F36324AF783200700298 /* NetworkWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWorker.swift; sourceTree = "<group>"; };
 		4410F36524AF789100700298 /* NetworkConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfiguration.swift; sourceTree = "<group>"; };
 		4410F36724AF91B100700298 /* PictureInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureInteractor.swift; sourceTree = "<group>"; };
@@ -79,7 +78,6 @@
 		4456904724B5AA8D00F49CCC /* DetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsInteractor.swift; sourceTree = "<group>"; };
 		449ACD1024AF9DD500288D41 /* PictureRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureRouter.swift; sourceTree = "<group>"; };
 		449ACD1224AFBA0C00288D41 /* PictureBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureBuilder.swift; sourceTree = "<group>"; };
-		44AA7CA624B3BA4100EF9071 /* PictureInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +203,7 @@
 		44DDB96424B5A3A1007ED0B2 /* Picture */ = {
 			isa = PBXGroup;
 			children = (
+				4410F36524AF789100700298 /* NetworkConfiguration.swift */,
 				44DDB96624B5A44E007ED0B2 /* Entity */,
 				4410F35A24AF6FEC00700298 /* Worker */,
 				4410F35B24AF6FFA00700298 /* Interactor */,
@@ -231,9 +230,7 @@
 		44DDB96624B5A44E007ED0B2 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				4410F36124AF73A900700298 /* Entity.swift */,
-				4410F36524AF789100700298 /* NetworkConfiguration.swift */,
-				44AA7CA624B3BA4100EF9071 /* PictureInfo.swift */,
+				4410F36124AF73A900700298 /* PictureEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -405,13 +402,12 @@
 				4410F36824AF91B100700298 /* PictureInteractor.swift in Sources */,
 				4410F36A24AF943800700298 /* PicturePresenter.swift in Sources */,
 				4456904924B5AA8D00F49CCC /* DetailsWorker.swift in Sources */,
-				4410F36224AF73A900700298 /* Entity.swift in Sources */,
+				4410F36224AF73A900700298 /* PictureEntity.swift in Sources */,
 				4410F36424AF783200700298 /* NetworkWorker.swift in Sources */,
 				4410F32724AF3CF100700298 /* AppDelegate.swift in Sources */,
 				4456904B24B5AA8D00F49CCC /* DetailsModels.swift in Sources */,
 				4456904C24B5AA8D00F49CCC /* DetailsViewController.swift in Sources */,
 				4410F36624AF789100700298 /* NetworkConfiguration.swift in Sources */,
-				44AA7CA724B3BA4100EF9071 /* PictureInfo.swift in Sources */,
 				4456904824B5AA8D00F49CCC /* DetailsPresenter.swift in Sources */,
 				4410F36024AF72A500700298 /* RetrievePictureWorker.swift in Sources */,
 				4410F32924AF3CF100700298 /* SceneDelegate.swift in Sources */,
