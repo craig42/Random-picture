@@ -23,10 +23,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let pictureView = storyboard.instantiateViewController(withIdentifier: "ViewControllerID")
         
-        let view = PictureBuilder.buildModule(view: pictureView as! PictureViewProtocol)
-        
-        window?.rootViewController = view as? UIViewController
-        window?.makeKeyAndVisible()
+        if let pictureView = (pictureView as? PictureViewProtocol) {
+            let view = PictureBuilder.buildModule(view: pictureView)
+            window?.rootViewController = view as? UIViewController
+            window?.makeKeyAndVisible()
+        }
     }
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
