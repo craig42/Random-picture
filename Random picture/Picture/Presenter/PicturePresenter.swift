@@ -30,15 +30,19 @@ extension PicturePresenter: PicturePresenterProtocol {
         view?.set(viewModel: pictureViewModel)
     }
     func saveResult(interactor: PictureInteractorProtocol, statusCode: StatusCode) {
-        switch statusCode {
-        case StatusCode.success:
-            view?.createAlert(title: "Success", message: "Message saved into library", actionTitle: "Ok")
-        case StatusCode.error:
-            view?.createAlert(title: "Fail",
+        #if targetEnvironment(macCatalyst)
+            view?.createAlert(title: "Error", message: "Cannot save picture on macOS platform", actionTitle: "Ok")
+        #else
+            switch statusCode {
+            case StatusCode.success:
+                view?.createAlert(title: "Success", message: "Message saved into library", actionTitle: "Ok")
+            case StatusCode.error:
+                view?.createAlert(title: "Fail",
                               message: "There is an error, check your library permission", actionTitle: "Ok")
-        default:
-            break
+            default:
+                break
         }
+        #endif
     }
     func fetchNewPicture(with dimension: Dimension) {
         interactor?.fetchNewPicture(with: dimension)
